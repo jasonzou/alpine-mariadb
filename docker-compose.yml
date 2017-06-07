@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    mariadb:
+      build: . 
+      ports:
+        - "23306:3306" 
+      #volumes:
+      ##- /host/data:/var/lib/mysql                    # volume for data
+      environment:
+        - MARIADB_ROOTPASSWORD=mariadb                  # root password
+        - MARIADB_ROOTHOSTMASK=172.%.%.%            # root user hostmask (optional)
+        - MARIADB_DATABASE=mydb                         # create database (optional)
+        - MARIADB_USERNAME=mariadb                      # grant user name (optional)
+        - MARIADB_PASSWORD=mariadb                      # grant user password (optional)
+        - MARIADB_HOSTMASK=172.%.%.%                    # grant user hostmask (optional)
+        - CONTAINER_ROOTHOSTMASK=192.168.%.%                # grant user hostmask (optional)
+        #- MARIADB_CONFIGSCRIPT=/root/mariadb/config.sh # custom configuration script
